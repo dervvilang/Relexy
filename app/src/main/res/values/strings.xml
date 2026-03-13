@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App -->
+    <string name="app_name">ReLexy</string>
+
+    <!-- Bottom navigation -->
+    <string name="nav_learn">Учить</string>
+    <string name="nav_dictionaries">Словари</string>
+    <string name="nav_community">Сообщество</string>
+    <string name="nav_profile">Профиль</string>
+
+    <!-- Auth -->
+    <string name="auth_login_title">Вход</string>
+    <string name="auth_register_title">Регистрация</string>
+    <string name="field_email">E-mail</string>
+    <string name="field_password">Пароль</string>
+    <string name="field_password_confirm">Подтвердите пароль</string>
+    <string name="field_nickname_unique">Никнейм (уникальный)</string>
+    <string name="action_login">Войти</string>
+    <string name="action_create_account">Создать аккаунт</string>
+    <string name="action_forgot_password">Забыли пароль?</string>
+    <string name="auth_have_account_login">Уже есть аккаунт? Войти</string>
+
+    <!-- Learn -->
+    <string name="learn_interval_repetition">Интервальные повторения</string>
+    <string name="learn_additional_modes">Дополнительные режимы</string>
+    <string name="learn_selected_dicts">Выбрано %1$d словарей</string>
+    <string name="learn_today_title">Сегодня</string>
+    <string name="learn_new_words_progress">Выучено новых слов: %1$d из %2$d</string>
+    <string name="action_start">Начать</string>
+    <string name="learn_review_words_title">Повторить слова</string>
+    <string name="learn_review_due">К повторению: %1$d слов</string>
+    <string name="action_review">Повторить</string>
+    <string name="learn_mixed_mode">Смешанный режим</string>
+    <string name="learn_auto_mode">Автоматический режим</string>
+    <string name="learn_browse_mode">Пролистать слова</string>
+
+    <!-- Dictionaries -->
+    <string name="dictionaries_import">Импортировать</string>
+    <string name="dictionaries_search_hint">Искать слова...</string>
+    <string name="dictionaries_my">Мои словари</string>
+    <string name="dictionaries_added">Добавленные словари</string>
+    <string name="dictionaries_create">Создать словарь</string>
+    <string name="dictionaries_own_words">Свои слова</string>
+
+    <!-- Community -->
+    <string name="community_subscriptions">Подписки</string>
+    <string name="community_search_hint">Введите ник пользователя...</string>
+    <string name="community_subscribe">Подписаться</string>
+
+    <!-- Dictionary screen -->
+    <string name="dictionary_title_placeholder">Название словаря</string>
+    <string name="dictionary_filter_by_status">По статусу</string>
+    <string name="status_new">Новое</string>
+    <string name="status_new_plural">Новые</string>
+    <string name="status_learning">На запоминании</string>
+    <string name="status_mastered">Усвоено</string>
+    <string name="status_mastered_plural">Усвоенные</string>
+    <string name="dictionary_word_translation_label">Слово - перевод</string>
+    <string name="action_change_difficulty">Изменить сложность</string>
+    <string name="difficulty_easy">легко</string>
+    <string name="difficulty_hard">сложно</string>
+    <string name="action_reset_progress">Сбросить прогресс</string>
+    <string name="action_mark_mastered">Отметить как усвоенное</string>
+    <string name="action_edit">Редактировать</string>
+    <string name="action_delete">Удалить</string>
+    <string name="action_edit_dictionary">Редактировать словарь</string>
+    <string name="action_reset_dictionary_progress">Сбросить прогресс словаря</string>
+    <string name="action_clear_dictionary">Очистить словарь</string>
+    <string name="action_clear_dictionary_typo">Отчистить словарь</string>
+    <string name="action_import_new_words">Импортировать новые слова</string>
+    <string name="action_publish_in_profile">Опубликовать в профиле</string>
+    <string name="action_share_dictionary">Поделиться словарем</string>
+    <string name="action_delete_dictionary">Удалить словарь</string>
+    <string name="action_copy_dictionary">Скопировать словарь</string>
+
+    <!-- Profile / Stats -->
+    <string name="profile_followers">Подписчики</string>
+    <string name="profile_current_streak">Текущая серия</string>
+    <string name="profile_record">Рекорд</string>
+    <string name="stats_title">Статистика</string>
+    <string name="stats_total">Всего</string>
+    <string name="period_7_days">7 дней</string>
+    <string name="period_label">Период: %1$s</string>
+    <string name="stats_learned_new_words">Выучено новых слов</string>
+    <string name="stats_reviewed_words">Повторено слов</string>
+    <string name="stats_words_per_month">300 слов в месяц</string>
+    <string name="weekday_mon">Пн</string>
+    <string name="weekday_tue">Вт</string>
+    <string name="weekday_wed">Ср</string>
+    <string name="weekday_thu">Чт</string>
+    <string name="weekday_fri">Пт</string>
+    <string name="weekday_sat">Сб</string>
+    <string name="weekday_sun">Вс</string>
+
+    <!-- Add / Edit dictionary & words -->
+    <string name="add_word_title">Добавление слова</string>
+    <string name="add_word_field_word_en">Слово на английском</string>
+    <string name="add_word_field_transcription_optional">Транскрипция (не обязательно)</string>
+    <string name="add_word_field_translation">Перевод</string>
+    <string name="add_word_field_example_en">Пример на английском</string>
+    <string name="add_word_add_example">Добавить пример</string>
+    <string name="action_save">Сохранить</string>
+    <string name="edit_dictionary_title">Редактирование словаря</string>
+    <string name="edit_dictionary_category_icon">Иконка категории</string>
+    <string name="learn_new_words_title">Учить новые слова</string>
+    <string name="learn_new_words_learned">Выучено %1$d новых слов</string>
+    <string name="learn_new_word">Новое слово</string>
+    <string name="learn_already_know_word">Уже знаю слово</string>
+    <string name="learn_start_learning_word">Начать учить слово</string>
+    <string name="action_copy_to_own_dictionary">Копировать в свой словарь</string>
+    <string name="select_dictionary_title">Выбор словаря</string>
+    <string name="action_select_all">Выбрать все</string>
+    <string name="quoted_own_words">“Свои слова”</string>
+
+    <!-- Session -->
+    <string name="session_word_index">Слово %1$d из %2$d</string>
+    <string name="session_repetition_number">%1$d-е повторение</string>
+    <string name="action_next">Следующее</string>
+    <string name="action_pause">Пауза</string>
+    <string name="action_continue">Продолжить</string>
+    <string name="session_remembered">Я вспомнил это слово</string>
+    <string name="session_not_remembered">Я не вспомнил это слово</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Настройки</string>
+    <string name="settings_account">Настройки аккаунта</string>
+    <string name="profile_settings_title">Настройки профиля</string>
+    <string name="settings_parameters">Параметры</string>
+    <string name="settings_learning_words">Изучение слов</string>
+    <string name="settings_show_words">Показывать слова</string>
+    <string name="settings_show_first">Показывать первым</string>
+    <string name="settings_english_word">Английское слово</string>
+    <string name="settings_russian_word">Русское слово</string>
+    <string name="settings_show_translation_immediately">Показывать перевод сразу</string>
+    <string name="settings_speak_word_on_show">Озвучивать английское слово при показе</string>
+    <string name="settings_delay_word_translation">Задержка между словом и переводом</string>
+    <string name="settings_delay_between_cards">Задержка между карточками</string>
+    <string name="seconds_value">%1$s сек</string>
+    <string name="settings_new_words_language_first">На каком языке сначала показывать новые слова</string>
+    <string name="language_english">Английский</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_random">Случайно</string>
+    <string name="settings_new_words_mode">Режим изучения новых слов</string>
+    <string name="mode_both_directions">В обоих направлениях</string>
+    <string name="settings_review_mode">Режим повторения слов</string>
+    <string name="settings_interval_to_mastered">Интервал для перехода слова в статус “усвоено”</string>
+    <string name="days_count">%1$d дней</string>
+    <string name="settings_show_pictures">Показывать картинки</string>
+    <string name="settings_on_card_open">При открытии карточки</string>
+    <string name="settings_daily_goal">Ежедневная цель</string>
+    <string name="goal_words">%1$d слов</string>
+    <string name="settings_give_words_for_review">Выдавать слова на повторение</string>
+    <string name="settings_from_all_dictionaries">Из всех словарей</string>
+    <string name="settings_only_selected_dictionaries">Только из выбранных словарей</string>
+    <string name="settings_speak_word_immediately">Озвучивать английское слово сразу при появлении</string>
+    <string name="settings_theme_light_dark">Тема светлая/темная</string>
+    <string name="settings_enable_notifications">Включить уведомления</string>
+    <string name="settings_notification_frequency">Частота уведомлений</string>
+    <string name="settings_frequency_every_1_hour">Раз в 1 час</string>
+    <string name="settings_notification_period">Временной период уведомлений</string>
+    <string name="common_start">Начало</string>
+    <string name="common_end">Конец</string>
+    <string name="common_never">Никогда</string>
+    <string name="common_immediately_on_appear">Сразу при появлении</string>
+    <string name="direction_en_to_ru">С английского на русский</string>
+    <string name="direction_ru_to_en">С русского на английский</string>
+    <string name="direction_one_random">В одном случайном направлении</string>
+    <string name="action_logout">Выйти из аккаунта</string>
+    <string name="action_delete_account">Удалить аккаунт</string>
+
+    <!-- Misc -->
+    <string name="misc_background">фон</string>
+    <string name="unit_words_genitive">слов</string>
+    <string name="unit_days_genitive">дней</string>
+
+    <!-- Other -->
+    <string name="learn_new_words_today_progress">Выучено новых слов сегодня: %1$d/%2$d</string>
+    <string name="progress_percent">%1$d%%</string>
+    <string name="words_count">%1$d слов</string>
+</resources>
