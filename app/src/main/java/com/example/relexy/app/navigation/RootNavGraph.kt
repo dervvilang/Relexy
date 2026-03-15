@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.relexy.feature.auth.login.view.LoginScreen
 import com.example.relexy.feature.auth.register.view.RegisterScreen
+import com.example.relexy.feature.learn.LearnMainScreen
 
 @Composable
 fun RootNavGraph(
@@ -25,6 +26,12 @@ fun RootNavGraph(
                         popUpTo(Destinations.LOGIN) { inclusive = true }
                         launchSingleTop = true
                     }
+                },
+                onLoginClick = {
+                    navController.navigate(Destinations.LEARN_MAIN) {
+                        popUpTo(Destinations.LOGIN) { inclusive = true }
+                        launchSingleTop = true
+                    }
                 }
             )
         }
@@ -38,6 +45,10 @@ fun RootNavGraph(
                     }
                 }
             )
+        }
+
+        composable(Destinations.LEARN_MAIN) {
+            LearnMainScreen()
         }
     }
 }
