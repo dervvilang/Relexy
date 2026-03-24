@@ -7,7 +7,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.relexy.feature.auth.login.view.LoginScreen
 import com.example.relexy.feature.auth.register.view.RegisterScreen
+import com.example.relexy.feature.community.CommunityMainScreen
+import com.example.relexy.feature.dictionary.DictionaryMainScreen
 import com.example.relexy.feature.learn.LearnMainScreen
+import com.example.relexy.feature.profile.ProfileMainScreen
 
 @Composable
 fun RootNavGraph(
@@ -49,6 +52,18 @@ fun RootNavGraph(
 
         composable(Destinations.LEARN_MAIN) {
             LearnMainScreen()
+        }
+
+        composable(Destinations.DICTIONARY_MAIN) {
+            DictionaryMainScreen()
+        }
+
+        composable(Destinations.COMMUNITY_MAIN) {
+            CommunityMainScreen()
+        }
+
+        composable(Destinations.PROFILE_MAIN) {
+            ProfileMainScreen()
         }
     }
 }

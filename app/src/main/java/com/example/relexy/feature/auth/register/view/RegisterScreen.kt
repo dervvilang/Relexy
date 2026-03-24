@@ -60,7 +60,7 @@ fun RegisterScreen(
                 Spacer(Modifier.height(26.dp))
 
                 RelexyTextField(
-                    label = stringResource(R.string.field_nickname_unique), // добавь строку в strings.xml
+                    label = stringResource(R.string.field_nickname_unique),
                     value = nickname,
                     onValueChange = { nickname = it }
                 )

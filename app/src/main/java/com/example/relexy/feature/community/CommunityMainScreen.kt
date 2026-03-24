@@ -1,5 +1,6 @@
 package com.example.relexy.feature.community
 
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,21 +14,27 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.relexy.R
+import com.example.relexy.core.ui.components.SearchCard
 import com.example.relexy.core.ui.components.UserListCard
 import com.example.relexy.core.ui.theme.RelexyTheme
 
 @Composable
 fun CommunityMainScreen() {
+    val focusManager = LocalFocusManager.current
+
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(vertical = 50.dp)
-            .padding(horizontal = 16.dp),
+            .padding(vertical = 16.dp)
+            .padding(horizontal = 16.dp)
+            .pointerInput(Unit) { detectTapGestures { focusManager.clearFocus() }},
         contentAlignment = Alignment.TopCenter
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -44,8 +51,11 @@ fun CommunityMainScreen() {
                 )
             }
 
-
             Spacer(Modifier.height(28.dp))
+
+            SearchCard(stringResource(R.string.community_search_hint))
+
+            Spacer(Modifier.height(13.dp))
 
             Text(
                 text = stringResource(R.string.community_subscriptions),

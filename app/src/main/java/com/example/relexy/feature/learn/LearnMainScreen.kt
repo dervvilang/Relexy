@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -30,11 +32,16 @@ fun LearnMainScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            //.padding(all = 16.dp)
+            //.padding(bottom = 16.dp)
             .padding(horizontal = 16.dp),
         contentAlignment = Alignment.TopCenter
     ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+        ) {
             BrandTitle()
 
             Spacer(Modifier.height(14.dp))
@@ -52,7 +59,7 @@ fun LearnMainScreen() {
             Spacer(Modifier.height(8.dp))
 
             PrimaryCard(
-                title = "Выбрано 5 словарей",
+                title = "Выбрано 5 словарей", //TODO
                 leadingIcon = R.drawable.ic_pencil_1,
                 icons = listOf(
                     R.drawable.ic_hospital,
@@ -120,6 +127,8 @@ fun LearnMainScreen() {
                 leadIcon = R.drawable.ic_anticlock_arrows,
                 secondaryIcon = R.drawable.ic_chevron_right_2,
             )
+
+            Spacer(Modifier.height(120.dp))
         }
     }
 }
