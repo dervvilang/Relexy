@@ -48,13 +48,11 @@ fun PrimaryCard(
     @DrawableRes leadingIcon: Int,
     @DrawableRes icons: List<Int>
 ) {
-    val shape = RoundedCornerShape(16.dp)
-
     Surface(
         modifier = modifier
             .fillMaxWidth()
             .clickable(onClick = onClick),
-        shape = shape,
+        shape = RoundedCornerShape(16.dp),
         shadowElevation = 4.dp,
         color = MaterialTheme.colorScheme.surface,
     ) {

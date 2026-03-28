@@ -27,7 +27,7 @@ val Typography = Typography(
         fontFamily = InterFontFamily,
         fontWeight = FontWeight.Normal,
         fontSize = 22.sp,
-        lineHeight = 27.sp
+        lineHeight = 27.sp,
     ),
 
     // Основной текст

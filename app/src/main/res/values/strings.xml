@@ -81,9 +81,9 @@
     <string name="profile_record">Рекорд</string>
     <string name="stats_title">Статистика</string>
     <string name="stats_total">Всего</string>
-    <string name="period_7_days">7 дней</string>
+    <string name="period_n_days">%1$d дней</string>
     <string name="period_label">Период: %1$s</string>
-    <string name="stats_learned_new_words">Выучено новых слов</string>
+    <string name="stats_learned_new_words_today">Выучено новых слов сегодня:</string>
     <string name="stats_reviewed_words">Повторено слов</string>
     <string name="stats_words_per_month">300 слов в месяц</string>
     <string name="weekday_mon">Пн</string>
