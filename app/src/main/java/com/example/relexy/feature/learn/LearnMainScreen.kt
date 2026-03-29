@@ -28,11 +28,12 @@ import com.example.relexy.core.ui.components.TodayCard
 import com.example.relexy.core.ui.theme.RelexyTheme
 
 @Composable
-fun LearnMainScreen() {
+fun LearnMainScreen(
+    onGoToDictionaryChoose: () -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            //.padding(bottom = 16.dp)
             .padding(horizontal = 16.dp),
         contentAlignment = Alignment.TopCenter
     ) {
@@ -59,7 +60,7 @@ fun LearnMainScreen() {
             Spacer(Modifier.height(8.dp))
 
             PrimaryCard(
-                title = "Выбрано 5 словарей", //TODO
+                title = stringResource(R.string.learn_selected_dicts, 5),
                 leadingIcon = R.drawable.ic_pencil_1,
                 icons = listOf(
                     R.drawable.ic_hospital,
@@ -67,7 +68,7 @@ fun LearnMainScreen() {
                     R.drawable.ic_americasglobe,
                     R.drawable.ic_americasglobe,
                 ),
-                onClick = {}
+                onClick = onGoToDictionaryChoose
             )
 
             Spacer(Modifier.height(13.dp))
@@ -136,7 +137,9 @@ fun LearnMainScreen() {
 @Preview
 @Composable
 fun LearnMainScreenPreview() {
-    RelexyTheme() {
-        LearnMainScreen()
+    RelexyTheme {
+        LearnMainScreen(
+            onGoToDictionaryChoose = {}
+        )
     }
 }

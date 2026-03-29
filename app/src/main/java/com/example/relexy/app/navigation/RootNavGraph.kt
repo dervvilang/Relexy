@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import com.example.relexy.feature.auth.login.view.LoginScreen
 import com.example.relexy.feature.auth.register.view.RegisterScreen
 import com.example.relexy.feature.community.CommunityMainScreen
+import com.example.relexy.feature.dictionary.DictionaryChooseScreen
 import com.example.relexy.feature.dictionary.DictionaryMainScreen
 import com.example.relexy.feature.learn.LearnMainScreen
 import com.example.relexy.feature.profile.ProfileMainScreen
@@ -51,7 +52,11 @@ fun RootNavGraph(
         }
 
         composable(Destinations.LEARN_MAIN) {
-            LearnMainScreen()
+            LearnMainScreen(
+                onGoToDictionaryChoose = {
+                    navController.navigate(Destinations.DICTIONARY_CHOOSE)
+                }
+            )
         }
 
         composable(Destinations.DICTIONARY_MAIN) {
@@ -64,6 +69,14 @@ fun RootNavGraph(
 
         composable(Destinations.PROFILE_MAIN) {
             ProfileMainScreen()
+        }
+
+        composable(Destinations.DICTIONARY_CHOOSE) {
+            DictionaryChooseScreen(
+                onBackClick = {
+                    navController.popBackStack()
+                }
+            )
         }
     }
 }
