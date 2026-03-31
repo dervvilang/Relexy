@@ -65,7 +65,7 @@ fun CommunityMainScreen() {
                     modifier = Modifier
                         .padding(start = 8.dp),
                     style = MaterialTheme.typography.displayLarge,
-                    color = MaterialTheme.colorScheme.onSurface
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
 

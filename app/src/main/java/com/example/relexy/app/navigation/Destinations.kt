@@ -11,4 +11,5 @@ object Destinations {
 
 
     const val DICTIONARY_CHOOSE = "dictionary_choose"
+    const val DICTIONARY = "dictionary"
 }

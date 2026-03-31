@@ -52,6 +52,8 @@
     <!-- Dictionary screen -->
     <string name="dictionary_title_placeholder">Название словаря</string>
     <string name="dictionary_filter_by_status">По статусу</string>
+    <string name="dictionary_filter_by_novelty">По новизне</string>
+    <string name="dictionary_filter_by_alphabet">По алфавиту</string>
     <string name="status_new">Новое</string>
     <string name="status_new_plural">Новые</string>
     <string name="status_learning">На запоминании</string>

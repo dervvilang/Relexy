@@ -10,6 +10,7 @@ import com.example.relexy.feature.auth.register.view.RegisterScreen
 import com.example.relexy.feature.community.CommunityMainScreen
 import com.example.relexy.feature.dictionary.DictionaryChooseScreen
 import com.example.relexy.feature.dictionary.DictionaryMainScreen
+import com.example.relexy.feature.dictionary.DictionaryScreen
 import com.example.relexy.feature.learn.LearnMainScreen
 import com.example.relexy.feature.profile.ProfileMainScreen
 
@@ -60,7 +61,11 @@ fun RootNavGraph(
         }
 
         composable(Destinations.DICTIONARY_MAIN) {
-            DictionaryMainScreen()
+            DictionaryMainScreen(
+                onGoToDictionaryScreen = {
+                    navController.navigate(Destinations.DICTIONARY)
+                }
+            )
         }
 
         composable(Destinations.COMMUNITY_MAIN) {
@@ -73,6 +78,14 @@ fun RootNavGraph(
 
         composable(Destinations.DICTIONARY_CHOOSE) {
             DictionaryChooseScreen(
+                onBackClick = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        composable(Destinations.DICTIONARY) {
+            DictionaryScreen(
                 onBackClick = {
                     navController.popBackStack()
                 }

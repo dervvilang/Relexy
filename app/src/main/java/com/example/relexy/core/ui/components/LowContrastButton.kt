@@ -23,7 +23,6 @@ fun LowContrastButton(
         shape = RoundedCornerShape(16.dp),
         colors = ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colorScheme.background,
-            //contentColor = MaterialTheme.colorScheme.onBackground
         )
     ) {
         Text(

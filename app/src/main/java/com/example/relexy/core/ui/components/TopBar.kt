@@ -46,7 +46,7 @@ fun TopBar(
                         .fillMaxWidth()
                         .padding(horizontal = sideSlotWidth + sideSpacing),
                     style = MaterialTheme.typography.displayLarge,
-                    color = MaterialTheme.colorScheme.onSurface,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                     textAlign = TextAlign.Center,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis

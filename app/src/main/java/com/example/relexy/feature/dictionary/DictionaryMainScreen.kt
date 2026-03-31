@@ -33,7 +33,9 @@ import com.example.relexy.core.ui.theme.RelexyTheme
 import com.example.relexy.domain.model.Dictionary
 
 @Composable
-fun DictionaryMainScreen() {
+fun DictionaryMainScreen(
+    onGoToDictionaryScreen: () -> Unit
+) {
     val focusManager = LocalFocusManager.current
 
     val dictionaries = listOf(
@@ -69,7 +71,7 @@ fun DictionaryMainScreen() {
                         text = stringResource(R.string.nav_dictionaries),
                         modifier = Modifier.padding(start = 8.dp),
                         style = MaterialTheme.typography.displayLarge,
-                        color = MaterialTheme.colorScheme.onSurface
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                     TextButton(
                         onClick = {}, contentPadding = PaddingValues(0.dp)
@@ -121,7 +123,7 @@ fun DictionaryMainScreen() {
                     key = { _, dictionary -> dictionary.id }
                 ) { index, dictionary ->
                     SecondaryCard(
-                        onClick = {},
+                        onClick = onGoToDictionaryScreen,
                         title = dictionary.title,
                         subtitle = stringResource(R.string.words_count, dictionary.wordCount),
                         leadIcon = dictionary.leadIcon,
@@ -161,7 +163,7 @@ fun DictionaryMainScreen() {
                     key = { _, dictionary -> dictionary.id }
                 ) { index, dictionary ->
                     SecondaryCard(
-                        onClick = {},
+                        onClick = onGoToDictionaryScreen,
                         title = dictionary.title,
                         subtitle = stringResource(R.string.words_count, dictionary.wordCount),
                         leadIcon = dictionary.leadIcon,
@@ -189,143 +191,8 @@ fun DictionaryMainScreen() {
 @Composable
 fun DictionaryMainScreenPreview() {
     RelexyTheme() {
-        DictionaryMainScreen()
+        DictionaryMainScreen(
+            {}
+        )
     }
 }
-
-
-
-
-/*Column(
-    horizontalAlignment = Alignment.CenterHorizontally,
-) {
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Text(
-            text = stringResource(R.string.nav_dictionaries),
-            modifier = Modifier.padding(start = 8.dp),
-            style = MaterialTheme.typography.displayLarge,
-            color = MaterialTheme.colorScheme.onSurface
-        )
-        TextButton(
-            onClick = {}, contentPadding = PaddingValues(0.dp)
-        ) {
-            Text(
-                text = stringResource(R.string.dictionaries_import),
-                modifier = Modifier.padding(end = 8.dp),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-        }
-    }
-
-    Spacer(Modifier.height(13.dp))
-
-    SearchCard(stringResource(R.string.dictionaries_search_hint))
-
-    Spacer(Modifier.height(13.dp))
-
-
-    Text(
-        text = stringResource(R.string.dictionaries_my),
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 8.dp),
-        textAlign = TextAlign.Start,
-        style = MaterialTheme.typography.bodyMedium,
-        color = MaterialTheme.colorScheme.onSurfaceVariant
-    )
-
-    Spacer(Modifier.height(8.dp))
-
-    TertiaryCard(
-        onClick = {},
-        title = stringResource(R.string.dictionaries_create),
-        leadIcon = R.drawable.ic_add_square,
-        secondaryIcon = R.drawable.ic_chevron_right_2,
-    )
-
-    Spacer(Modifier.height(13.dp))
-
-    SecondaryCard(
-        onClick = {},
-        title = stringResource(R.string.dictionaries_own_words),
-        subtitle = stringResource(R.string.words_count, 89),
-        leadIcon = R.drawable.ic_alarmclock_1,
-        trailingContent = {
-            Text(
-                text = stringResource(R.string.progress_percent, 89),
-                modifier = Modifier.padding(end = 8.dp),
-                textAlign = TextAlign.Start,
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-        })
-
-    Spacer(Modifier.height(28.dp))
-
-    Text(
-        text = stringResource(R.string.dictionaries_added),
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 8.dp),
-        textAlign = TextAlign.Start,
-        style = MaterialTheme.typography.bodyMedium,
-        color = MaterialTheme.colorScheme.onSurfaceVariant
-    )
-
-    Spacer(Modifier.height(8.dp))
-
-    SecondaryCard(
-        onClick = {},
-        title = stringResource(R.string.dictionaries_own_words),
-        subtitle = stringResource(R.string.words_count, 89),
-        leadIcon = R.drawable.ic_alarmclock_1,
-        trailingContent = {
-            Text(
-                text = stringResource(R.string.progress_percent, 27),
-                modifier = Modifier.padding(end = 8.dp),
-                textAlign = TextAlign.Start,
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-        })
-
-    Spacer(Modifier.height(13.dp))
-
-    SecondaryCard(
-        onClick = {},
-        title = stringResource(R.string.dictionaries_own_words),
-        subtitle = stringResource(R.string.words_count, 60),
-        leadIcon = R.drawable.ic_alarmclock_1,
-        trailingContent = {
-            Text(
-                text = stringResource(R.string.progress_percent, 67),
-                modifier = Modifier.padding(end = 8.dp),
-                textAlign = TextAlign.Start,
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-        })
-
-    Spacer(Modifier.height(13.dp))
-
-    SecondaryCard(
-        onClick = {},
-        title = stringResource(R.string.dictionaries_own_words),
-        subtitle = stringResource(R.string.words_count, 130),
-        leadIcon = R.drawable.ic_alarmclock_1,
-        trailingContent = {
-            Text(
-                text = stringResource(R.string.progress_percent, 66),
-                modifier = Modifier.padding(end = 8.dp),
-                textAlign = TextAlign.Start,
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-        }
-    )
-}*/

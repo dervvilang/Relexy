@@ -48,8 +48,6 @@ import com.example.relexy.domain.model.Dictionary
 fun DictionaryChooseScreen(
     onBackClick: () -> Unit
 ) {
-    val checkboxColor = MaterialTheme.colorScheme.primary
-
     val dictionaries = listOf(
         Dictionary("0", "Свои слова", R.drawable.ic_bluebook, 114, 71, true),
         Dictionary("1", "Фразовые глаголы", R.drawable.ic_ledger, 165, 47, false),
