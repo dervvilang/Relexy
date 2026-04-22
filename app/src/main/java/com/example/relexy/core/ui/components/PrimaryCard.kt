@@ -48,20 +48,18 @@ fun PrimaryCard(
     @DrawableRes leadingIcon: Int,
     @DrawableRes icons: List<Int>
 ) {
-    val shape = RoundedCornerShape(16.dp)
-
     Surface(
         modifier = modifier
             .fillMaxWidth()
             .clickable(onClick = onClick),
-        shape = shape,
+        shape = RoundedCornerShape(16.dp),
         shadowElevation = 4.dp,
         color = MaterialTheme.colorScheme.surface,
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 14.dp, vertical = 22.dp),
+                .padding(horizontal = 14.dp, vertical = 16.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Image(
@@ -70,18 +68,18 @@ fun PrimaryCard(
                 modifier = Modifier.size(40.dp)
             )
 
-            Spacer(modifier = Modifier.width(12.dp))
+            Spacer(modifier = Modifier.width(10.dp))
 
             Text(
                 text = title,
-                style = MaterialTheme.typography.titleMedium,
+                style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurface,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 modifier = Modifier.weight(1f)
             )
 
-            Spacer(modifier = Modifier.width(10.dp))
+            Spacer(modifier = Modifier.width(8.dp))
 
             TrailingIconsGroup(icons = icons)
         }
@@ -91,10 +89,10 @@ fun PrimaryCard(
 @Composable
 private fun TrailingIconsGroup(
     @DrawableRes icons: List<Int>,
-    iconSize: Dp = 38.dp,
-    iconSpacing: Dp = 4.dp,
-    maxWidth: Dp = 120.dp,
-    fadeWidth: Dp = 28.dp,
+    iconSize: Dp = 36.dp,
+    //iconSpacing: Dp = 2.dp,
+    maxWidth: Dp = 100.dp,
+    fadeWidth: Dp = 20.dp,
     modifier: Modifier = Modifier,
 ) {
     var containerWidthPx by remember { mutableIntStateOf(0) }
@@ -119,7 +117,7 @@ private fun TrailingIconsGroup(
                 .onSizeChanged { size ->
                     contentWidthPx = size.width
                 },
-            horizontalArrangement = Arrangement.spacedBy(iconSpacing),
+            //horizontalArrangement = Arrangement.spacedBy(iconSpacing),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             icons.forEach { iconRes ->

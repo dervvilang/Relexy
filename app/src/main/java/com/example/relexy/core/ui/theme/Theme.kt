@@ -24,7 +24,7 @@ private val LightColorScheme = lightColorScheme(
 
     // Фоны
     background = RelexyBg,
-    onBackground = RelexyTextMain,
+    onBackground = RelexySubtitle,
 
     // Surface - поверхности
     surface = RelexyCard,
@@ -32,19 +32,17 @@ private val LightColorScheme = lightColorScheme(
 
     // Для вариантов surface
     surfaceVariant = RelexyAccentBg,
-    onSurfaceVariant = RelexySubtitle,
+    onSurfaceVariant = RelexyTitle,
 
     // Ошибки
     error = RelexyError,
     onError = RelexyTextOnColor,
-
 
 )
 
 @Composable
 fun RelexyTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
     dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
@@ -54,7 +52,7 @@ fun RelexyTheme(
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
 
-        darkTheme -> DarkColorScheme
+        darkTheme -> LightColorScheme /*DarkColorScheme*/
         else -> LightColorScheme
     }
 

@@ -52,6 +52,8 @@
     <!-- Dictionary screen -->
     <string name="dictionary_title_placeholder">Название словаря</string>
     <string name="dictionary_filter_by_status">По статусу</string>
+    <string name="dictionary_filter_by_novelty">По новизне</string>
+    <string name="dictionary_filter_by_alphabet">По алфавиту</string>
     <string name="status_new">Новое</string>
     <string name="status_new_plural">Новые</string>
     <string name="status_learning">На запоминании</string>
@@ -81,9 +83,9 @@
     <string name="profile_record">Рекорд</string>
     <string name="stats_title">Статистика</string>
     <string name="stats_total">Всего</string>
-    <string name="period_7_days">7 дней</string>
+    <string name="period_n_days">%1$d дней</string>
     <string name="period_label">Период: %1$s</string>
-    <string name="stats_learned_new_words">Выучено новых слов</string>
+    <string name="stats_learned_new_words_today">Выучено новых слов сегодня:</string>
     <string name="stats_reviewed_words">Повторено слов</string>
     <string name="stats_words_per_month">300 слов в месяц</string>
     <string name="weekday_mon">Пн</string>
@@ -103,7 +105,7 @@
     <string name="add_word_add_example">Добавить пример</string>
     <string name="action_save">Сохранить</string>
     <string name="edit_dictionary_title">Редактирование словаря</string>
-    <string name="edit_dictionary_category_icon">Иконка категории</string>
+    <string name="dictionary_icon">Иконка словаря</string>
     <string name="learn_new_words_title">Учить новые слова</string>
     <string name="learn_new_words_learned">Выучено %1$d новых слов</string>
     <string name="learn_new_word">Новое слово</string>
@@ -179,4 +181,5 @@
     <string name="learn_new_words_today_progress">Выучено новых слов сегодня: %1$d/%2$d</string>
     <string name="progress_percent">%1$d%%</string>
     <string name="words_count">%1$d слов</string>
+    <string name="nickname_user">nicknameuser%1$d</string>
 </resources>

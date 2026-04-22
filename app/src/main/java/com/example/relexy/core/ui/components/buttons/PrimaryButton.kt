@@ -1,5 +1,6 @@
-package com.example.relexy.core.ui.components
+package com.example.relexy.core.ui.components.buttons
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -12,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import com.example.relexy.core.ui.theme.RelexyTheme
 
 @Composable
-fun SecondaryButton(
+fun PrimaryButton(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier
@@ -22,28 +23,26 @@ fun SecondaryButton(
         modifier = modifier,
         shape = RoundedCornerShape(16.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = MaterialTheme.colorScheme.onSecondary,
-            contentColor = MaterialTheme.colorScheme.onBackground
+            containerColor = MaterialTheme.colorScheme.secondary,
+            contentColor = MaterialTheme.colorScheme.onSecondary
+        ),
+        contentPadding = PaddingValues(
+            horizontal = 24.dp,
+            vertical = 12.dp
         )
     ) {
-        Text(
-            text = text,
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurface
-        )
+        Text(text = text, style = MaterialTheme.typography.bodyLarge)
     }
 }
 
-@Preview(
-    showBackground = true,
-    backgroundColor = 0xFF0000FF
-)
+@Preview
 @Composable
-fun SecondaryButtonPreview() {
-    RelexyTheme {
-        SecondaryButton(
+fun PrimaryButtonPreview() {
+    RelexyTheme() {
+        PrimaryButton(
             text = "Начать",
             onClick = {}
         )
+
     }
 }
