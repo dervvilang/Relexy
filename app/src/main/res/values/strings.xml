@@ -105,7 +105,7 @@
     <string name="add_word_add_example">Добавить пример</string>
     <string name="action_save">Сохранить</string>
     <string name="edit_dictionary_title">Редактирование словаря</string>
-    <string name="edit_dictionary_category_icon">Иконка категории</string>
+    <string name="dictionary_icon">Иконка словаря</string>
     <string name="learn_new_words_title">Учить новые слова</string>
     <string name="learn_new_words_learned">Выучено %1$d новых слов</string>
     <string name="learn_new_word">Новое слово</string>

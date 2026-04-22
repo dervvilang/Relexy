@@ -15,6 +15,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.relexy.R
 import com.example.relexy.core.ui.components.*
+import com.example.relexy.core.ui.components.textFields.RelexyTextField
+import com.example.relexy.core.ui.components.buttons.PrimaryButton
 
 @Composable
 fun RegisterScreen(

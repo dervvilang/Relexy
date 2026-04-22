@@ -39,15 +39,20 @@ fun UserInfoCard(
                 .fillMaxWidth()
                 .padding(vertical = 8.dp, horizontal = 6.dp),
             //horizontalArrangement = Arrangement.spacedBy(12.dp),
-            horizontalArrangement = Arrangement.SpaceEvenly
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Column(modifier = Modifier.weight(1f), horizontalAlignment = Alignment.CenterHorizontally) {
+            Column(
+                modifier = Modifier.weight(1f),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
                 Text(
                     text = stringResource(R.string.community_subscriptions),
                     style = MaterialTheme.typography.bodyMedium
                 )
 
-                Spacer(Modifier.height(6.dp))
+                Spacer(Modifier.height(8.dp))
 
                 Text(
                     text = "7",
@@ -61,13 +66,16 @@ fun UserInfoCard(
                 thickness = 1.dp
             )
 
-            Column(modifier = Modifier.weight(1f), horizontalAlignment = Alignment.CenterHorizontally) {
+            Column(
+                modifier = Modifier.weight(1f),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
                 Text(
                     text = stringResource(R.string.profile_followers),
                     style = MaterialTheme.typography.bodyMedium
                 )
 
-                Spacer(Modifier.height(6.dp))
+                Spacer(Modifier.height(8.dp))
 
                 Text(
                     text = "7",
@@ -81,13 +89,16 @@ fun UserInfoCard(
                 thickness = 1.dp
             )
 
-            Column(modifier = Modifier.weight(1f), horizontalAlignment = Alignment.CenterHorizontally) {
+            Column(
+                modifier = Modifier.weight(1f),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
                 Text(
                     text = stringResource(R.string.nav_dictionaries),
                     style = MaterialTheme.typography.bodyMedium
                 )
 
-                Spacer(Modifier.height(6.dp))
+                Spacer(Modifier.height(8.dp))
 
                 Text(
                     text = "7",

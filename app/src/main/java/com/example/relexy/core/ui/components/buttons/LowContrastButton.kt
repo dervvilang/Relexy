@@ -1,4 +1,4 @@
-package com.example.relexy.core.ui.components
+package com.example.relexy.core.ui.components.buttons
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button

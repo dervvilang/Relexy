@@ -9,10 +9,13 @@ import com.example.relexy.feature.auth.login.view.LoginScreen
 import com.example.relexy.feature.auth.register.view.RegisterScreen
 import com.example.relexy.feature.community.CommunityMainScreen
 import com.example.relexy.feature.dictionary.DictionaryChooseScreen
+import com.example.relexy.feature.dictionary.DictionaryEditorScreen
 import com.example.relexy.feature.dictionary.DictionaryMainScreen
 import com.example.relexy.feature.dictionary.DictionaryScreen
+import com.example.relexy.feature.dictionary.wordEditor.WordEditorScreen
 import com.example.relexy.feature.learn.LearnMainScreen
 import com.example.relexy.feature.profile.ProfileMainScreen
+import com.example.relexy.feature.settings.SettingsScreen
 
 @Composable
 fun RootNavGraph(
@@ -64,6 +67,9 @@ fun RootNavGraph(
             DictionaryMainScreen(
                 onGoToDictionaryScreen = {
                     navController.navigate(Destinations.DICTIONARY)
+                },
+                onGoToDictionaryEditorScreen = {
+                    navController.navigate(Destinations.DICTIONARY_EDITOR)
                 }
             )
         }
@@ -73,7 +79,11 @@ fun RootNavGraph(
         }
 
         composable(Destinations.PROFILE_MAIN) {
-            ProfileMainScreen()
+            ProfileMainScreen(
+                onGoToSettings = {
+                    navController.navigate(Destinations.SETTINGS)
+                }
+            )
         }
 
         composable(Destinations.DICTIONARY_CHOOSE) {
@@ -86,6 +96,33 @@ fun RootNavGraph(
 
         composable(Destinations.DICTIONARY) {
             DictionaryScreen(
+                onBackClick = {
+                    navController.popBackStack()
+                },
+                onGoToWordEditorScreen = {
+                    navController.navigate(Destinations.WORD_EDITOR)
+                }
+            )
+        }
+
+        composable(Destinations.DICTIONARY_EDITOR) {
+            DictionaryEditorScreen(
+                onBackClick = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        composable(Destinations.WORD_EDITOR) {
+            WordEditorScreen(
+                onBackClick = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        composable(Destinations.SETTINGS) {
+            SettingsScreen(
                 onBackClick = {
                     navController.popBackStack()
                 }

@@ -14,6 +14,10 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
@@ -23,14 +27,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.relexy.R
-import com.example.relexy.core.ui.components.SearchCard
 import com.example.relexy.core.ui.components.UserListCard
+import com.example.relexy.core.ui.components.textFields.SearchTextField
 import com.example.relexy.core.ui.theme.RelexyTheme
 import com.example.relexy.domain.model.User
 
 @Composable
 fun CommunityMainScreen() {
     val focusManager = LocalFocusManager.current
+    var searchText by remember { mutableStateOf("") }
 
     val users = listOf(
         User(id = "0", nickname = "nickname1", icon = R.drawable.ic_princess),
@@ -71,7 +76,11 @@ fun CommunityMainScreen() {
 
             Spacer(Modifier.height(28.dp))
 
-            SearchCard(stringResource(R.string.community_search_hint))
+            SearchTextField(
+                value = searchText,
+                onValueChange = { searchText = it },
+                placeholder = stringResource(R.string.community_search_hint)
+            )
 
             Spacer(Modifier.height(13.dp))
 

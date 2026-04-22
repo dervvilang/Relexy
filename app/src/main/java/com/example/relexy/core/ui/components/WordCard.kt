@@ -26,6 +26,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.relexy.R
+import com.example.relexy.core.ui.theme.RelexyIndicatorLearning
+import com.example.relexy.core.ui.theme.RelexyIndicatorMastered
 import com.example.relexy.core.ui.theme.RelexyIndicatorNew
 import com.example.relexy.core.ui.theme.RelexyTheme
 import com.example.relexy.domain.model.Word
@@ -60,18 +62,18 @@ fun WordCard(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 8.dp, vertical = 4.dp),
+                    .padding(horizontal = 8.dp, vertical = 6.dp),
                 verticalArrangement = Arrangement.Center
             ) {
                 Text(
                     text = stringResource(item.status.titleRes()),
-                    style = MaterialTheme.typography.labelSmall,
+                    style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.onSurface.copy(0.7f),
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
 
-                Spacer(modifier = Modifier.height(6.dp))
+                Spacer(modifier = Modifier.height(4.dp))
 
                 Text(
                     text = item.originalText,
@@ -103,8 +105,8 @@ fun WordStatus.titleRes(): Int {
 fun WordStatus.indicatorColor(): Color {
     return when (this) {
         WordStatus.NEW -> RelexyIndicatorNew
-        WordStatus.LEARNING -> RelexyIndicatorNew
-        WordStatus.MASTERED -> RelexyIndicatorNew
+        WordStatus.LEARNING -> RelexyIndicatorLearning
+        WordStatus.MASTERED -> RelexyIndicatorMastered
     }
 }
 
@@ -117,7 +119,7 @@ fun WordCardPreview() {
                 id = "1",
                 originalText = "Word",
                 translationText = "Слово",
-                status = WordStatus.NEW
+                status = WordStatus.LEARNING
             ),
             onClick = {},
             modifier = Modifier.padding(16.dp)

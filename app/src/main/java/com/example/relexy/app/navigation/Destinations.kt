@@ -8,8 +8,11 @@ object Destinations {
     const val DICTIONARY_MAIN = "dictionary_main"
     const val COMMUNITY_MAIN = "community_main"
     const val PROFILE_MAIN = "profile_main"
+    const val SETTINGS = "settings"
 
 
     const val DICTIONARY_CHOOSE = "dictionary_choose"
     const val DICTIONARY = "dictionary"
+    const val DICTIONARY_EDITOR = "dictionary_editor"
+    const val WORD_EDITOR = "word_editor"
 }

@@ -3,7 +3,6 @@ package com.example.relexy.feature.dictionary
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -17,6 +16,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
@@ -26,17 +29,19 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.relexy.R
-import com.example.relexy.core.ui.components.SearchCard
 import com.example.relexy.core.ui.components.SecondaryCard
 import com.example.relexy.core.ui.components.TertiaryCard
+import com.example.relexy.core.ui.components.textFields.SearchTextField
 import com.example.relexy.core.ui.theme.RelexyTheme
 import com.example.relexy.domain.model.Dictionary
 
 @Composable
 fun DictionaryMainScreen(
-    onGoToDictionaryScreen: () -> Unit
+    onGoToDictionaryScreen: () -> Unit,
+    onGoToDictionaryEditorScreen: () -> Unit,
 ) {
     val focusManager = LocalFocusManager.current
+    var searchText by remember { mutableStateOf("") }
 
     val dictionaries = listOf(
         Dictionary("0", "Свои слова", R.drawable.ic_bluebook, 114, 71, true),
@@ -60,7 +65,10 @@ fun DictionaryMainScreen(
             .pointerInput(Unit) { detectTapGestures { focusManager.clearFocus() } },
         contentAlignment = Alignment.TopCenter
     ) {
-        LazyColumn(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+        LazyColumn(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             item {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -88,7 +96,13 @@ fun DictionaryMainScreen(
 
             item { Spacer(Modifier.height(13.dp)) }
 
-            item { SearchCard(stringResource(R.string.dictionaries_search_hint)) }
+            item {
+                SearchTextField(
+                    value = searchText,
+                    onValueChange = { searchText = it },
+                    placeholder = stringResource(R.string.dictionaries_search_hint)
+                )
+            }
 
             item { Spacer(Modifier.height(13.dp)) }
 
@@ -108,7 +122,7 @@ fun DictionaryMainScreen(
 
             item {
                 TertiaryCard(
-                    onClick = {},
+                    onClick = onGoToDictionaryEditorScreen,
                     title = stringResource(R.string.dictionaries_create),
                     leadIcon = R.drawable.ic_add_square,
                     secondaryIcon = R.drawable.ic_chevron_right_2,
@@ -129,7 +143,10 @@ fun DictionaryMainScreen(
                         leadIcon = dictionary.leadIcon,
                         trailingContent = {
                             Text(
-                                text = stringResource(R.string.progress_percent, dictionary.progress),
+                                text = stringResource(
+                                    R.string.progress_percent,
+                                    dictionary.progress
+                                ),
                                 modifier = Modifier.padding(end = 8.dp),
                                 textAlign = TextAlign.Start,
                                 style = MaterialTheme.typography.bodyMedium,
@@ -169,7 +186,10 @@ fun DictionaryMainScreen(
                         leadIcon = dictionary.leadIcon,
                         trailingContent = {
                             Text(
-                                text = stringResource(R.string.progress_percent, dictionary.progress),
+                                text = stringResource(
+                                    R.string.progress_percent,
+                                    dictionary.progress
+                                ),
                                 modifier = Modifier.padding(end = 8.dp),
                                 textAlign = TextAlign.Start,
                                 style = MaterialTheme.typography.bodyMedium,
@@ -192,7 +212,7 @@ fun DictionaryMainScreen(
 fun DictionaryMainScreenPreview() {
     RelexyTheme() {
         DictionaryMainScreen(
-            {}
+            {}, {}
         )
     }
 }

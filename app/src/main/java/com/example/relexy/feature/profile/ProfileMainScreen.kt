@@ -34,7 +34,9 @@ import com.example.relexy.core.ui.components.WeekDaysRow
 import com.example.relexy.core.ui.theme.RelexyTheme
 
 @Composable
-fun ProfileMainScreen() {
+fun ProfileMainScreen(
+    onGoToSettings: () -> Unit = {}
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -43,7 +45,8 @@ fun ProfileMainScreen() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         IconButton(
-            onClick = {}, modifier = Modifier
+            onClick = onGoToSettings,
+            modifier = Modifier
                 .size(40.dp)
                 .align(Alignment.End)
         ) {

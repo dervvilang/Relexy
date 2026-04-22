@@ -24,6 +24,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.relexy.R
+import com.example.relexy.core.ui.components.buttons.LowContrastButton
 import com.example.relexy.core.ui.theme.RelexyTheme
 
 @Composable

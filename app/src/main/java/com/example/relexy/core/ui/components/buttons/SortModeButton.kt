@@ -1,4 +1,4 @@
-package com.example.relexy.core.ui.components
+package com.example.relexy.core.ui.components.buttons
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
