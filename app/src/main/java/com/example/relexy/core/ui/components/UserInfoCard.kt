@@ -24,7 +24,10 @@ import com.example.relexy.core.ui.theme.RelexyTheme
 
 @Composable
 fun UserInfoCard(
-    modifier: Modifier = Modifier
+    onSubscriptionsClick: () -> Unit,
+    onFollowersClick: () -> Unit,
+    onDictionariesClick: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     Surface(
         modifier = modifier
@@ -42,23 +45,12 @@ fun UserInfoCard(
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Column(
-                modifier = Modifier.weight(1f),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-                Text(
-                    text = stringResource(R.string.community_subscriptions),
-                    style = MaterialTheme.typography.bodyMedium
-                )
-
-                Spacer(Modifier.height(8.dp))
-
-                Text(
-                    text = "7",
-                    style = MaterialTheme.typography.bodyMedium
-                )
-            }
+            UserInfoStatItem(
+                title = stringResource(R.string.community_subscriptions),
+                value = "7",
+                onClick = onSubscriptionsClick,
+                modifier = Modifier.weight(1f)
+            )
 
             VerticalDivider(
                 modifier = Modifier.height(56.dp),
@@ -66,22 +58,12 @@ fun UserInfoCard(
                 thickness = 1.dp
             )
 
-            Column(
-                modifier = Modifier.weight(1f),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(
-                    text = stringResource(R.string.profile_followers),
-                    style = MaterialTheme.typography.bodyMedium
-                )
-
-                Spacer(Modifier.height(8.dp))
-
-                Text(
-                    text = "7",
-                    style = MaterialTheme.typography.bodyMedium
-                )
-            }
+            UserInfoStatItem(
+                title = stringResource(R.string.profile_followers),
+                value = "7",
+                onClick = onFollowersClick,
+                modifier = Modifier.weight(1f)
+            )
 
             VerticalDivider(
                 modifier = Modifier.height(56.dp),
@@ -89,31 +71,48 @@ fun UserInfoCard(
                 thickness = 1.dp
             )
 
-            Column(
-                modifier = Modifier.weight(1f),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(
-                    text = stringResource(R.string.nav_dictionaries),
-                    style = MaterialTheme.typography.bodyMedium
-                )
-
-                Spacer(Modifier.height(8.dp))
-
-                Text(
-                    text = "7",
-                    style = MaterialTheme.typography.bodyMedium
-                )
-            }
+            UserInfoStatItem(
+                title = stringResource(R.string.nav_dictionaries),
+                value = "7",
+                onClick = onDictionariesClick,
+                modifier = Modifier.weight(1f)
+            )
         }
     }
+}
 
+@Composable
+private fun UserInfoStatItem(
+    title: String,
+    value: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Column(
+        modifier = modifier
+            .clickable { onClick() }
+            .padding(vertical = 8.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+    ) {
+        Text(
+            text = title,
+            style = MaterialTheme.typography.bodyMedium
+        )
+
+        Spacer(Modifier.height(8.dp))
+
+        Text(
+            text = value,
+            style = MaterialTheme.typography.bodyMedium
+        )
+    }
 }
 
 @Preview
 @Composable
 fun UserInfoCardPreview() {
     RelexyTheme() {
-        UserInfoCard()
+        UserInfoCard({}, {}, {})
     }
 }
