@@ -89,7 +89,7 @@ fun ProfileMainScreen(
 
         Spacer(Modifier.height(8.dp))
 
-        UserInfoCard()
+        UserInfoCard({}, {}, {})
 
         Spacer(Modifier.height(14.dp))
 
