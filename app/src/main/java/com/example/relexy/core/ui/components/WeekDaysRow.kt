@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.relexy.R
 import com.example.relexy.core.ui.theme.RelexyTheme
-import com.example.relexy.domain.model.WeekDayItem
+import com.example.relexy.domain.roughModels.WeekDayItem
 
 @Composable
 fun WeekDaysRow(

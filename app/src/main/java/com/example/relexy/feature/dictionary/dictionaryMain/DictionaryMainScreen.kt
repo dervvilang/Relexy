@@ -1,5 +1,6 @@
-package com.example.relexy.feature.dictionary
+package com.example.relexy.feature.dictionary.dictionaryMain
 
+import android.content.Context
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -11,18 +12,15 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -33,32 +31,23 @@ import com.example.relexy.core.ui.components.SecondaryCard
 import com.example.relexy.core.ui.components.TertiaryCard
 import com.example.relexy.core.ui.components.textFields.SearchTextField
 import com.example.relexy.core.ui.theme.RelexyTheme
-import com.example.relexy.domain.model.Dictionary
+import com.example.relexy.data.local.entity.DictionaryOwnerType
+import com.example.relexy.domain.model.DictionaryListItem
 
 @Composable
 fun DictionaryMainScreen(
-    onGoToDictionaryScreen: () -> Unit,
-    onGoToDictionaryEditorScreen: () -> Unit,
+    uiState: DictionaryMainUiState,
+    onSearchQueryChange: (String) -> Unit,
+    onGoToDictionaryScreen: (String) -> Unit,
+    onCreateDictionary: () -> Unit,
+    onImportClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val focusManager = LocalFocusManager.current
-    var searchText by remember { mutableStateOf("") }
-
-    val dictionaries = listOf(
-        Dictionary("0", "Свои слова", R.drawable.ic_bluebook, 114, 71, true),
-        Dictionary("1", "Фразовые глаголы", R.drawable.ic_ledger, 165, 47, false),
-        Dictionary("2", "Путешествия", R.drawable.ic_airplane, 143, 64, false),
-        Dictionary("3", "Животные", R.drawable.ic_wolfface, 96, 55, false),
-        Dictionary("4", "Животные", R.drawable.ic_wolfface, 43, 25, false),
-        Dictionary("5", "Животные", R.drawable.ic_wolfface, 44, 76, false),
-        Dictionary("6", "Животные", R.drawable.ic_wolfface, 87, 51, false),
-        Dictionary("7", "Животные", R.drawable.ic_wolfface, 28, 93, false),
-    )
-
-    val myDictionaries = dictionaries.filter { it.isOwnedByUser }
-    val addedDictionaries = dictionaries.filter { !it.isOwnedByUser }
+    val context = LocalContext.current
 
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .padding(vertical = 16.dp)
             .padding(horizontal = 16.dp)
@@ -81,8 +70,10 @@ fun DictionaryMainScreen(
                         style = MaterialTheme.typography.displayLarge,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
+
                     TextButton(
-                        onClick = {}, contentPadding = PaddingValues(0.dp)
+                        onClick = onImportClick,
+                        contentPadding = PaddingValues(0.dp)
                     ) {
                         Text(
                             text = stringResource(R.string.dictionaries_import),
@@ -98,8 +89,8 @@ fun DictionaryMainScreen(
 
             item {
                 SearchTextField(
-                    value = searchText,
-                    onValueChange = { searchText = it },
+                    value = uiState.searchQuery,
+                    onValueChange = onSearchQueryChange,
                     placeholder = stringResource(R.string.dictionaries_search_hint)
                 )
             }
@@ -122,7 +113,7 @@ fun DictionaryMainScreen(
 
             item {
                 TertiaryCard(
-                    onClick = onGoToDictionaryEditorScreen,
+                    onClick = onCreateDictionary,
                     title = stringResource(R.string.dictionaries_create),
                     leadIcon = R.drawable.ic_add_square,
                     secondaryIcon = R.drawable.ic_chevron_right_2,
@@ -131,31 +122,29 @@ fun DictionaryMainScreen(
 
             item { Spacer(Modifier.height(8.dp)) }
 
-            if (myDictionaries.isNotEmpty()) {
-                itemsIndexed(
-                    items = myDictionaries,
-                    key = { _, dictionary -> dictionary.id }
-                ) { index, dictionary ->
-                    SecondaryCard(
-                        onClick = onGoToDictionaryScreen,
-                        title = dictionary.title,
-                        subtitle = stringResource(R.string.words_count, dictionary.wordCount),
-                        leadIcon = dictionary.leadIcon,
-                        trailingContent = {
-                            Text(
-                                text = stringResource(
-                                    R.string.progress_percent,
-                                    dictionary.progress
-                                ),
-                                modifier = Modifier.padding(end = 8.dp),
-                                textAlign = TextAlign.Start,
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                        }
-                    )
-                    Spacer(Modifier.height(8.dp))
-                }
+            items(
+                items = uiState.ownDictionaries,
+                key = { dictionary -> dictionary.id }
+            ) { dictionary ->
+                SecondaryCard(
+                    onClick = { onGoToDictionaryScreen(dictionary.id) },
+                    title = dictionary.title,
+                    subtitle = stringResource(R.string.words_count, dictionary.wordCount),
+                    leadIcon = dictionary.iconKey.toDictionaryIconRes(context),
+                    trailingContent = {
+                        Text(
+                            text = stringResource(
+                                R.string.progress_percent,
+                                dictionary.masteredPercent
+                            ),
+                            modifier = Modifier.padding(end = 8.dp),
+                            textAlign = TextAlign.Start,
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                )
+                Spacer(Modifier.height(8.dp))
             }
 
             item {
@@ -174,45 +163,79 @@ fun DictionaryMainScreen(
 
             item { Spacer(Modifier.height(8.dp)) }
 
-            if (addedDictionaries.isNotEmpty()) {
-                itemsIndexed(
-                    items = addedDictionaries,
-                    key = { _, dictionary -> dictionary.id }
-                ) { index, dictionary ->
-                    SecondaryCard(
-                        onClick = onGoToDictionaryScreen,
-                        title = dictionary.title,
-                        subtitle = stringResource(R.string.words_count, dictionary.wordCount),
-                        leadIcon = dictionary.leadIcon,
-                        trailingContent = {
-                            Text(
-                                text = stringResource(
-                                    R.string.progress_percent,
-                                    dictionary.progress
-                                ),
-                                modifier = Modifier.padding(end = 8.dp),
-                                textAlign = TextAlign.Start,
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                        }
-                    )
-                    Spacer(Modifier.height(8.dp))
-                }
+            items(
+                items = uiState.addedDictionaries,
+                key = { dictionary -> dictionary.id }
+            ) { dictionary ->
+                SecondaryCard(
+                    onClick = { onGoToDictionaryScreen(dictionary.id) },
+                    title = dictionary.title,
+                    subtitle = stringResource(R.string.words_count, dictionary.wordCount),
+                    leadIcon = dictionary.iconKey.toDictionaryIconRes(context),
+                    trailingContent = {
+                        Text(
+                            text = stringResource(
+                                R.string.progress_percent,
+                                dictionary.masteredPercent
+                            ),
+                            modifier = Modifier.padding(end = 8.dp),
+                            textAlign = TextAlign.Start,
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                )
+                Spacer(Modifier.height(8.dp))
             }
 
             item { Spacer(Modifier.height(100.dp)) }
         }
-
     }
+}
+
+private fun String.toDictionaryIconRes(context: Context): Int {
+    val resId = context.resources.getIdentifier(
+        this,
+        "drawable",
+        context.packageName
+    )
+    return if (resId != 0) resId else R.drawable.ic_bluebook
 }
 
 @Preview
 @Composable
-fun DictionaryMainScreenPreview() {
-    RelexyTheme() {
+private fun DictionaryMainScreenPreview() {
+    RelexyTheme {
         DictionaryMainScreen(
-            {}, {}
+            uiState = DictionaryMainUiState(
+                searchQuery = "",
+                ownDictionaries = listOf(
+                    DictionaryListItem(
+                        id = "1",
+                        title = "Свои слова",
+                        iconKey = "ic_for_dictionaries_books",
+                        ownerType = DictionaryOwnerType.OWNED,
+                        wordCount = 114,
+                        masteredPercent = 71
+                    )
+                ),
+                addedDictionaries = listOf(
+                    DictionaryListItem(
+                        id = "2",
+                        title = "Путешествия",
+                        iconKey = "ic_for_dictionaries_airplane",
+                        ownerType = DictionaryOwnerType.ADDED,
+                        wordCount = 143,
+                        masteredPercent = 64
+                    )
+                ),
+                isLoading = false,
+                errorMessage = null
+            ),
+            onSearchQueryChange = {},
+            onGoToDictionaryScreen = {},
+            onCreateDictionary = {},
+            onImportClick = {}
         )
     }
 }

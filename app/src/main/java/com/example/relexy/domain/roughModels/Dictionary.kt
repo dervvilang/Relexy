@@ -1,4 +1,4 @@
-package com.example.relexy.domain.model
+package com.example.relexy.domain.roughModels
 
 import androidx.annotation.DrawableRes
 

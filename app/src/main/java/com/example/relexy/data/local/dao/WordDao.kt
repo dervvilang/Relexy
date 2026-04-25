@@ -39,7 +39,7 @@ interface WordDao {
     @Update
     suspend fun updateWord(word: WordEntity) // обновление слова целиком
 
-    @Query(
+    /*@Query(
         """
         UPDATE words
         SET isDeleted = 1,
@@ -51,7 +51,7 @@ interface WordDao {
         wordId: String,
         updatedAt: Long
     )
-    // мягкое удаление слова
+    // мягкое удаление слова*/
 
     @Query(
         """

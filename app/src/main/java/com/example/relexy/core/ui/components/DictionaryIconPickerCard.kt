@@ -23,8 +23,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.relexy.core.ui.theme.RelexyTheme
-import com.example.relexy.domain.model.DictionaryIconItem
-import com.example.relexy.domain.model.DictionaryIcons
+import com.example.relexy.domain.roughModels.DictionaryIconItem
+import com.example.relexy.domain.roughModels.DictionaryIcons
 
 @Composable
 fun DictionaryIconPickerCard(

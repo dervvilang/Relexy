@@ -34,7 +34,7 @@ import com.example.relexy.core.ui.components.SecondaryCard
 import com.example.relexy.core.ui.components.TopBar
 import com.example.relexy.core.ui.components.buttons.PrimaryButtonWithBlur
 import com.example.relexy.core.ui.theme.RelexyTheme
-import com.example.relexy.domain.model.Dictionary
+import com.example.relexy.domain.roughModels.Dictionary
 
 @Composable
 fun DictionaryChooseScreen(

@@ -30,7 +30,7 @@ import com.example.relexy.R
 import com.example.relexy.core.ui.components.UserListCard
 import com.example.relexy.core.ui.components.textFields.SearchTextField
 import com.example.relexy.core.ui.theme.RelexyTheme
-import com.example.relexy.domain.model.User
+import com.example.relexy.domain.roughModels.User
 
 @Composable
 fun CommunityMainScreen() {
