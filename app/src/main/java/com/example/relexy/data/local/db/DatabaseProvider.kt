@@ -16,7 +16,9 @@ object DatabaseProvider {
                 RelexyDatabase::class.java,
                 "relexy_database"
             )
-                .fallbackToDestructiveMigration(false)
+                // TODO - раскомментировать в конце
+                //.fallbackToDestructiveMigration(false)
+                .fallbackToDestructiveMigration(true)
                 .build()
 
             INSTANCE = instance

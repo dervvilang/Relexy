@@ -43,6 +43,8 @@ import com.example.relexy.core.ui.theme.RelexyTheme
 
 @Composable
 fun WordEditorScreen(
+    dictionaryId: String,
+    wordId: String?,
     onBackClick: () -> Unit
 ) {
     val focusManager = LocalFocusManager.current
@@ -155,8 +157,6 @@ fun WordEditorScreen(
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
 
-                //Spacer(Modifier.height(13.dp))
-
                 Surface(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -208,7 +208,6 @@ fun WordInputSection(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     isError: Boolean = false,
-    // singleLine: Boolean = true
 ) {
     TextField(
         value = value,
@@ -216,40 +215,36 @@ fun WordInputSection(
         modifier = modifier.fillMaxWidth(),
         enabled = enabled,
         isError = isError,
-
         textStyle = MaterialTheme.typography.bodyMedium,
-
         label = {
             Text(
                 text = label,
                 style = MaterialTheme.typography.labelMedium
             )
         },
-
         colors = TextFieldDefaults.colors(
             focusedContainerColor = MaterialTheme.colorScheme.surface,
             unfocusedContainerColor = MaterialTheme.colorScheme.surface,
-
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
-
-            disabledIndicatorColor = Color.Transparent, // убирает линию у отключённого поля
-
-            focusedLabelColor = MaterialTheme.colorScheme.primary, // цвет label, когда поле в фокусе
-            unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant, // цвет label, когда поле не активно
-            focusedTextColor = MaterialTheme.colorScheme.onSurface, // цвет вводимого текста, когда поле в фокусе
-            unfocusedTextColor = MaterialTheme.colorScheme.onSurface, // цвет вводимого текста без фокуса
-
-            cursorColor = MaterialTheme.colorScheme.primary, // цвет курсора при обычном состоянии
+            disabledIndicatorColor = Color.Transparent,
+            focusedLabelColor = MaterialTheme.colorScheme.primary,
+            unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
+            focusedTextColor = MaterialTheme.colorScheme.onSurface,
+            unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+            cursorColor = MaterialTheme.colorScheme.primary,
         )
     )
 }
 
-
 @Preview
 @Composable
 fun WordEditorScreenPreview() {
-    RelexyTheme() {
-        WordEditorScreen({})
+    RelexyTheme {
+        WordEditorScreen(
+            dictionaryId = "dictionary_preview",
+            wordId = null,
+            onBackClick = {}
+        )
     }
 }

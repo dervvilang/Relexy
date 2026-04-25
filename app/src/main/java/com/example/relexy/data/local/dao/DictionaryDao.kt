@@ -45,7 +45,7 @@ interface DictionaryDao {
     @Update
     suspend fun updateDictionary(dictionary: DictionaryEntity) // полное обновление словаря
 
-    @Query(
+    /*@Query(
         """
         UPDATE dictionaries
         SET isDeleted = 1,
@@ -57,7 +57,7 @@ interface DictionaryDao {
         dictionaryId: String,
         updatedAt: Long
     )
-    // мягкое удаление словаря
+    // мягкое удаление словаря*/
 
     @Query(
         """

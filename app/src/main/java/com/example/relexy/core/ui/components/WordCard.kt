@@ -30,12 +30,12 @@ import com.example.relexy.core.ui.theme.RelexyIndicatorLearning
 import com.example.relexy.core.ui.theme.RelexyIndicatorMastered
 import com.example.relexy.core.ui.theme.RelexyIndicatorNew
 import com.example.relexy.core.ui.theme.RelexyTheme
-import com.example.relexy.domain.model.Word
-import com.example.relexy.domain.model.WordStatus
+import com.example.relexy.data.local.entity.WordStatus
+import com.example.relexy.domain.model.WordListItem
 
 @Composable
 fun WordCard(
-    item: Word,
+    item: WordListItem,
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -112,10 +112,10 @@ fun WordStatus.indicatorColor(): Color {
 
 @Preview(showBackground = true)
 @Composable
-fun WordCardPreview() {
+private fun WordCardPreview() {
     RelexyTheme {
         WordCard(
-            item = Word(
+            item = WordListItem(
                 id = "1",
                 originalText = "Word",
                 translationText = "Слово",
